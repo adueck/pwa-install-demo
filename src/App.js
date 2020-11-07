@@ -6,7 +6,6 @@ let deferredPrompt;
     
 function App() {
   const [installable, setInstallable] = useState(false);
-  const [installed, setInstalled] = useState(false);
 
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
@@ -22,10 +21,6 @@ function App() {
       // Log install to analytics
       console.log('INSTALL: Success');
     });
-    
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      setInstalled(true);
-    }
   }, []);
 
   const handleInstallClick = (e) => {
@@ -51,9 +46,6 @@ function App() {
           <button className="install-button" onClick={handleInstallClick}>
             INSTALL ME
           </button>
-        }
-        {(!installable && !installed) &&
-          <p>Sorry, your browser doesn't support the internal install button</p>
         }
         <p>
           <a href={repo} className="App-link">View source on GitHub</a>
