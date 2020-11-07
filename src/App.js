@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 let deferredPrompt;
+const repo = "https://github.com/adueck/pwa-install-demo";
 
 function App() {
   const [installable, setInstallable] = useState(false);
@@ -41,8 +42,13 @@ function App() {
       <header className="App-header">
         <h2>Install Demo</h2>
         {installable &&
-          <button onClick={handleInstallClick}>INSTALL ME</button>
+          <button className="install-button" onClick={handleInstallClick}>
+            INSTALL ME
+          </button>
         }
+        <p>
+          <a href={repo} className="App-link">View source on GitHub</a>
+        </p>
       </header>
     </div>
   );
